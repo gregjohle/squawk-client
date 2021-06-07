@@ -1,0 +1,20 @@
+.modal {
+  position: absolute;
+  top: 35%;
+  left: 42%;
+  right: 42%;
+  bottom: 50%;
+  background-color: white;
+  border: solid 3px rgb(116, 188, 255);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("./images/modal-background.jpg") center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
