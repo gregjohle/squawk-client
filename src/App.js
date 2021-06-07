@@ -8,8 +8,10 @@ function App() {
       name: "Greg",
       email: "greg@email.com",
       password: "Password123",
-    }
-  ])
+    },
+  ]);
+  const [currentUser, serCurrentUser] = useState({});
+
   return <div className='App'></div>;
 }
 
