@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
+import Header from "./components/header";
 
 function App() {
   const [users, setUsers] = useState([
@@ -12,7 +13,11 @@ function App() {
   ]);
   const [currentUser, serCurrentUser] = useState({});
 
-  return <div className='App'></div>;
+  return (
+    <div className='App'>
+      <Header />
+    </div>
+  );
 }
 
 export default App;

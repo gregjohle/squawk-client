@@ -1,0 +1,11 @@
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(116, 188, 255);
+}
+
+header h1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
