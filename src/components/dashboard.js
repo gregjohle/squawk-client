@@ -13,7 +13,14 @@ export default function Dashboard(props) {
           button below
         </p>
       </div>
-      
+      <div className='options'>
+        <button>
+          <b>Create</b>
+        </button>
+        <button>
+          <b>Join</b>
+        </button>
+      </div>
     </div>
   );
 }

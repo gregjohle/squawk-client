@@ -2,9 +2,10 @@ import "./App.css";
 import React, { useState } from "react";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import { uuid as uuidV4 } from "uuid";
+import { v4 as uuidV4 } from "uuid";
 import Main from "./components/main";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
+import Dashboard from "./components/dashboard";
 
 function App() {
   const [users, setUsers] = useState([
@@ -14,12 +15,6 @@ function App() {
       email: "greg@email.com",
       password: "Password123",
     },
-    {
-      id: "aa411cca-c7be-11eb-b8bc-0242ac130003",
-      name: "Steve",
-      email: "steve@email.com",
-      password: "123Password",
-    },
   ]);
   const [currentUser, setCurrentUser] = useState({});
   const [loginModal, setLoginModal] = useState(false);
@@ -27,12 +22,18 @@ function App() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [registerName, setRegisterName] = useState("");
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [registerPassword, setRegisterPassword] = useState("");
+  const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function findUser(email) {
+    console.log("email: " + email);
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === email) {
-        console.log(users[i]);
-        return users[i];
+        let user = users[i];
+
+        return user;
       }
       return console.log("No user found");
     }
@@ -41,19 +42,34 @@ function App() {
   function demoLogin() {
     setCurrentUser(users[0]);
     console.log(currentUser);
+    setIsLoggedIn(true);
   }
 
-  function handleLogin(email, password) {
-    let user = findUser(email);
+  function handleLogin() {
+    let user = findUser(loginEmail);
     console.log("user: " + user);
     if (user.password === undefined) {
       console.log("user email not defined");
-    } else if (user.password === password) {
+    } else if (user.password === loginPassword) {
       setCurrentUser(user);
       console.log("logged in");
-    } else if (user.password !== password) {
+    } else if (user.password !== loginPassword) {
       return alert("Invalid Password");
     }
+  }
+
+  function addNewUser(name, email, password) {
+    let oldUsersArr = users;
+    let newUser = {
+      id: uuidV4(),
+      name: name,
+      email: email,
+      password: password,
+    };
+
+    let newUserArr = oldUsersArr.push(newUser);
+    console.log(newUser);
+    setUsers(newUserArr);
   }
 
   return (
@@ -61,21 +77,36 @@ function App() {
       <Header />
       <main>
         <Switch>
-          <Route path='/dashboard'></Route>
+          <Route path='/dashboard'>
+            <Dashboard currentUser={currentUser} />
+          </Route>
           <Route path='/chat'></Route>
           <Route path='/'>
-            <Main
-              handleLogin={handleLogin}
-              loginModal={loginModal}
-              setLoginModal={setLoginModal}
-              registerModal={registerModal}
-              setRegisterModal={setRegisterModal}
-              loginEmail={loginEmail}
-              setLoginEmail={setLoginEmail}
-              loginPassword={loginPassword}
-              setLoginPassword={setLoginPassword}
-              demoLogin={demoLogin}
-            />
+            {isLoggedIn ? (
+              <Redirect to='/dashboard' />
+            ) : (
+              <Main
+                handleLogin={handleLogin}
+                loginModal={loginModal}
+                setLoginModal={setLoginModal}
+                registerModal={registerModal}
+                setRegisterModal={setRegisterModal}
+                loginEmail={loginEmail}
+                setLoginEmail={setLoginEmail}
+                loginPassword={loginPassword}
+                setLoginPassword={setLoginPassword}
+                demoLogin={demoLogin}
+                addNewUser={addNewUser}
+                registerName={registerName}
+                setRegisterName={setRegisterName}
+                registerEmail={registerEmail}
+                setRegisterEmail={setRegisterEmail}
+                registerPassword={registerPassword}
+                setRegisterPassword={setRegisterPassword}
+                registerConfirmPassword={registerConfirmPassword}
+                setRegisterConfirmPassword={setRegisterConfirmPassword}
+              />
+            )}
           </Route>
         </Switch>
       </main>

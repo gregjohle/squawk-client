@@ -6,6 +6,8 @@ import Login from "./login";
 import "./modal.css";
 import Signup from "./signup";
 
+Modal.setAppElement("#root");
+
 export default function Main(props) {
   let {
     handleLogin,
@@ -18,6 +20,15 @@ export default function Main(props) {
     loginPassword,
     setLoginPassword,
     demoLogin,
+    addNewUser,
+    registerName,
+    setRegisterName,
+    registerEmail,
+    setRegisterEmail,
+    registerPassword,
+    setRegisterPassword,
+    registerConfirmPassword,
+    setRegisterConfirmPassword,
   } = props;
 
   function handleOpenLogin(event) {
@@ -91,7 +102,18 @@ export default function Main(props) {
         onRequestClose={handleCloseRegister}
         className='modal'
         overlayClassName='overlay'>
-        <Signup />
+        <Signup
+          addNewUser={addNewUser}
+          registerName={registerName}
+          setRegisterName={setRegisterName}
+          registerEmail={registerEmail}
+          setRegisterEmail={setRegisterEmail}
+          registerPassword={registerPassword}
+          setRegisterPassword={setRegisterPassword}
+          registerConfirmPassword={registerConfirmPassword}
+          setRegisterConfirmPassword={setRegisterConfirmPassword}
+          setRegisterModal={setRegisterModal}
+        />
       </Modal>
     </div>
   );

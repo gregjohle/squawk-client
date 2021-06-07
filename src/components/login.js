@@ -13,7 +13,6 @@ export default function Login(props) {
 
   function handleEmailChange(event) {
     setLoginEmail(event.target.value);
-    console.log(event.target.value);
   }
 
   function handlePasswordChange(event) {
@@ -22,8 +21,7 @@ export default function Login(props) {
 
   function handleUserLogin(event) {
     event.preventDefault();
-    console.log(loginEmail);
-    handleLogin(loginEmail, loginPassword);
+    handleLogin();
     setLoginModal(false);
   }
 
