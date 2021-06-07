@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import "./main.css";
 import Login from "./login";
 import "./modal.css";
+import Signup from "./signup";
 
 export default function Main(props) {
   let {
@@ -12,6 +13,11 @@ export default function Main(props) {
     setLoginModal,
     registerModal,
     setRegisterModal,
+    loginEmail,
+    setLoginEmail,
+    loginPassword,
+    setLoginPassword,
+    demoLogin,
   } = props;
 
   function handleOpenLogin(event) {
@@ -21,6 +27,15 @@ export default function Main(props) {
 
   function handleLoginClose() {
     setLoginModal(!loginModal);
+  }
+
+  function handleOpenRegister(event) {
+    event.preventDefault();
+    setRegisterModal(!registerModal);
+  }
+
+  function handleCloseRegister() {
+    setRegisterModal(!registerModal);
   }
 
   return (
@@ -39,14 +54,14 @@ export default function Main(props) {
           click the login button and enter your email address and password.
         </p>
         <p>To see a demo of this app, click on the demo button below.</p>
-        <button>
+        <button onClick={() => demoLogin()}>
           <b>Demo</b>
         </button>
       </div>
       <div className='stackedWrapper'>
         <div className='stacker'>
           <h2>Register</h2>
-          <button>
+          <button onClick={(e) => handleOpenRegister(e)}>
             <b>Register</b>
           </button>
         </div>
@@ -62,7 +77,21 @@ export default function Main(props) {
         onRequestClose={handleLoginClose}
         className='modal'
         overlayClassName='overlay'>
-        <Login />
+        <Login
+          handleLogin={handleLogin}
+          loginemail={loginEmail}
+          setLoginEmail={setLoginEmail}
+          loginPassword={loginPassword}
+          setLoginPassword={setLoginPassword}
+          setLoginModal={setLoginModal}
+        />
+      </Modal>
+      <Modal
+        isOpen={registerModal}
+        onRequestClose={handleCloseRegister}
+        className='modal'
+        overlayClassName='overlay'>
+        <Signup />
       </Modal>
     </div>
   );

@@ -3,9 +3,10 @@
   top: 35%;
   left: 42%;
   right: 42%;
-  bottom: 50%;
+  bottom: 45%;
   background-color: white;
   border: solid 3px rgb(116, 188, 255);
+  border-radius: 5px;
 }
 
 .overlay {
