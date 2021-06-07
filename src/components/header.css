@@ -15,6 +15,16 @@ header img {
   width: 75px;
 }
 
+.hidden {
+  display: none;
+}
+
+button.headerButton {
+  background: rgb(116, 188, 255);
+  border: 3px black solid;
+  margin-top: 2%;
+}
+
 @media screen and (min-width: 900px) {
   header {
     flex-direction: row;
@@ -23,5 +33,10 @@ header img {
 
   img {
     padding-left: 3%;
+  }
+
+  button.headerButton {
+    margin-top: 0;
+    margin-left: 2%;
   }
 }

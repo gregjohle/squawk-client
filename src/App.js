@@ -27,6 +27,14 @@ function App() {
   const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  function handleLogout() {
+    setIsLoggedIn(false);
+    setCurrentUser({});
+    setLoginEmail("");
+    setLoginPassword("");
+    return <Redirect to='/' />;
+  }
+
   function findUser(email) {
     console.log("email: " + email);
     for (let i = 0; i < users.length; i++) {
@@ -41,8 +49,8 @@ function App() {
 
   function demoLogin() {
     setCurrentUser(users[0]);
-    console.log(currentUser);
     setIsLoggedIn(true);
+    return <Redirect to='/dashboard' />;
   }
 
   function handleLogin() {
@@ -74,39 +82,35 @@ function App() {
 
   return (
     <div className='App'>
-      <Header />
+      <Header handleLogout={handleLogout} isLoggedIn={isLoggedIn} />
       <main>
         <Switch>
           <Route path='/dashboard'>
             <Dashboard currentUser={currentUser} />
           </Route>
           <Route path='/chat'></Route>
-          <Route path='/'>
-            {isLoggedIn ? (
-              <Redirect to='/dashboard' />
-            ) : (
-              <Main
-                handleLogin={handleLogin}
-                loginModal={loginModal}
-                setLoginModal={setLoginModal}
-                registerModal={registerModal}
-                setRegisterModal={setRegisterModal}
-                loginEmail={loginEmail}
-                setLoginEmail={setLoginEmail}
-                loginPassword={loginPassword}
-                setLoginPassword={setLoginPassword}
-                demoLogin={demoLogin}
-                addNewUser={addNewUser}
-                registerName={registerName}
-                setRegisterName={setRegisterName}
-                registerEmail={registerEmail}
-                setRegisterEmail={setRegisterEmail}
-                registerPassword={registerPassword}
-                setRegisterPassword={setRegisterPassword}
-                registerConfirmPassword={registerConfirmPassword}
-                setRegisterConfirmPassword={setRegisterConfirmPassword}
-              />
-            )}
+          <Route exact path='/'>
+            <Main
+              handleLogin={handleLogin}
+              loginModal={loginModal}
+              setLoginModal={setLoginModal}
+              registerModal={registerModal}
+              setRegisterModal={setRegisterModal}
+              loginEmail={loginEmail}
+              setLoginEmail={setLoginEmail}
+              loginPassword={loginPassword}
+              setLoginPassword={setLoginPassword}
+              demoLogin={demoLogin}
+              addNewUser={addNewUser}
+              registerName={registerName}
+              setRegisterName={setRegisterName}
+              registerEmail={registerEmail}
+              setRegisterEmail={setRegisterEmail}
+              registerPassword={registerPassword}
+              setRegisterPassword={setRegisterPassword}
+              registerConfirmPassword={registerConfirmPassword}
+              setRegisterConfirmPassword={setRegisterConfirmPassword}
+            />
           </Route>
         </Switch>
       </main>
