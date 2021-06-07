@@ -4,8 +4,24 @@ header {
   justify-content: center;
   align-items: center;
   background-color: rgb(116, 188, 255);
+  padding-bottom: 3%;
 }
 
 header h1 {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+header img {
+  width: 75px;
+}
+
+@media screen and (min-width: 900px) {
+  header {
+    flex-direction: row;
+    padding-bottom: 0%;
+  }
+
+  img {
+    padding-left: 3%;
+  }
 }

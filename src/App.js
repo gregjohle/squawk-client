@@ -1,6 +1,7 @@
 import "./App.css";
 import React, { useState } from "react";
 import Header from "./components/header";
+import Footer from "./components/footer";
 
 function App() {
   const [users, setUsers] = useState([
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className='App'>
       <Header />
+      <Footer />
     </div>
   );
 }
