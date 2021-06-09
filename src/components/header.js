@@ -19,7 +19,7 @@ export default function Header(props) {
     <header>
       <h1>Squawk</h1>
       <img src={Logo} alt='logo for Squawk, the outline of a seagull' />
-      <Link to='/'>
+      <Link to='/' className='buttonClass'>
         <button className={buttonClass} onClick={() => handleLogout()}>
           Logout
         </button>

@@ -11,8 +11,19 @@ export default function JoinRoom(props) {
   }
 
   function handleJoinRoom() {
-    setJoinRoomModal(!joinRoomModal);
+    if (roomId.length > 0) {
+      setJoinRoomModal(!joinRoomModal);
+    } else if (roomId.length === 0) {
+      alert("Please enter a room ID");
+    }
   }
+
+  let destination = () => {
+    if (roomId === "") {
+      return "/";
+    }
+    return "/chat/:" + roomId;
+  };
 
   return (
     <div className='joinRoom'>
@@ -25,7 +36,7 @@ export default function JoinRoom(props) {
         onChange={(e) => handleRoomId(e)}
         required
       />
-      <Link to={"/chat/:" + roomId}>
+      <Link to={destination}>
         <button onClick={() => handleJoinRoom()}>
           <b>Join Room</b>
         </button>

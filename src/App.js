@@ -6,6 +6,7 @@ import { v4 as uuidV4 } from "uuid";
 import Main from "./components/main";
 import { Switch, Route, Link, Redirect } from "react-router-dom";
 import Dashboard from "./components/dashboard";
+import Chat from "./components/chat-room";
 
 function App() {
   const [users, setUsers] = useState([
@@ -52,7 +53,6 @@ function App() {
   function demoLogin() {
     setCurrentUser(users[0]);
     setIsLoggedIn(true);
-    return <Redirect to='/dashboard' />;
   }
 
   function handleLogin() {
@@ -126,7 +126,9 @@ function App() {
       <Header handleLogout={handleLogout} isLoggedIn={isLoggedIn} />
       <main>
         <Switch>
-          <Route path={"/chat/:" + roomId}></Route>
+          <Route path={"/chat/:" + roomId}>
+            <Chat />
+          </Route>
           <Route exact path='/'>
             {homeContent}
           </Route>
