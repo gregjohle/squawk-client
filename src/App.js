@@ -9,14 +9,14 @@ import Dashboard from "./components/dashboard";
 import Chat from "./components/chat-room";
 
 function App() {
-  const [users, setUsers] = useState([
+  var users = [
     {
       id: "ae8ef4f6-c795-11eb-b8bc-0242ac130003",
       name: "Test User",
       email: "test@email.com",
       password: "Password123",
     },
-  ]);
+  ];
   const [currentUser, setCurrentUser] = useState({});
   const [loginModal, setLoginModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
@@ -38,48 +38,45 @@ function App() {
     setLoginPassword("");
   }
 
-  function findUser(email) {
-    console.log("email: " + email);
-    for (let i = 0; i < users.length; i++) {
-      if (users[i].email === email) {
-        let user = users[i];
-
-        return user;
-      }
-      return console.log("No user found");
-    }
-  }
-
   function demoLogin() {
     setCurrentUser(users[0]);
     setIsLoggedIn(true);
   }
 
   function handleLogin() {
-    let user = findUser(loginEmail);
-    console.log("user: " + user);
-    if (user.password === undefined) {
-      console.log("user email not defined");
-    } else if (user.password === loginPassword) {
-      setCurrentUser(user);
-      console.log("logged in");
-    } else if (user.password !== loginPassword) {
-      return alert("Invalid Password");
+    console.log(users);
+    let loginUser = users.filter((user) => user.email === loginEmail);
+    if (loginUser.length === 0) {
+      console.log("No user");
+    } else if (loginUser[0].password === loginPassword) {
+      setCurrentUser(loginUser[0]);
+      setIsLoggedIn(true);
     }
+    // setCurrentUser(loginUser);
+
+    // setIsLoggedIn(true);
+
+    // let user = findUser(loginEmail);
+    // console.log("user: " + user);
+    // if (user.password === undefined) {
+    //   console.log("user email not defined");
+    // } else if (user.password === loginPassword) {
+    //   setCurrentUser(user);
+    //   console.log("logged in");
+    // } else if (user.password !== loginPassword) {
+    //   return alert("Invalid Password");
+    // }
   }
 
   function addNewUser(name, email, password) {
-    let oldUsersArr = users;
     let newUser = {
       id: uuidV4(),
       name: name,
       email: email,
       password: password,
     };
-
-    let newUserArr = oldUsersArr.push(newUser);
     console.log(newUser);
-    setUsers(newUserArr);
+    return [...users].push([newUser]);
   }
 
   let homeContent = () => {
