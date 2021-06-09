@@ -6,9 +6,5 @@
 }
 
 div.newRoom h3 {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 60%,
-    var(--secondary-color-active) 40%
-  );
+  background: #eae9ee;
 }

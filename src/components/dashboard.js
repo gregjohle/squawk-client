@@ -46,14 +46,25 @@ export default function Dashboard(props) {
         onRequestClose={handleCreateRoomModal}
         className='dashboardModal'
         overlayClassName='dashboardOverlay'>
-        <CreateRoom setRoomId={setRoomId} />
+        <CreateRoom
+          currentUser={currentUser}
+          createRoomModal={createRoomModal}
+          setCreateRoomModal={setCreateRoomModal}
+          setRoomId={setRoomId}
+        />
       </Modal>
       <Modal
         isOpen={joinRoomModal}
         onRequestClose={handleJoinModal}
         className='dashboardModal'
         overlayClassName='dashboardOverlay'>
-        <JoinRoom roomId={roomId} setRoomId={setRoomId} />
+        <JoinRoom
+          roomId={roomId}
+          currentUser={currentUser}
+          setRoomId={setRoomId}
+          joinRoomModal={joinRoomModal}
+          setJoinRoomModal={setJoinRoomModal}
+        />
       </Modal>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./header.css";
 import Logo from "./images/logo.png";
 
@@ -18,9 +19,11 @@ export default function Header(props) {
     <header>
       <h1>Squawk</h1>
       <img src={Logo} alt='logo for Squawk, the outline of a seagull' />
-      <button className={buttonClass} onClick={() => handleLogout()}>
-        Logout
-      </button>
+      <Link to='/'>
+        <button className={buttonClass} onClick={() => handleLogout()}>
+          Logout
+        </button>
+      </Link>
     </header>
   );
 }

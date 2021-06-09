@@ -1,11 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./join-room.css";
 
 export default function JoinRoom(props) {
-  let { roomId, setRoomId } = props;
+  let { roomId, setRoomId, currentUser, joinRoomModal, setJoinRoomModal } =
+    props;
 
   function handleRoomId(event) {
     setRoomId(event.target.value);
+  }
+
+  function handleJoinRoom() {
+    setJoinRoomModal(!joinRoomModal);
   }
 
   return (
@@ -19,9 +25,11 @@ export default function JoinRoom(props) {
         onChange={(e) => handleRoomId(e)}
         required
       />
-      <button>
-        <b>Join Room</b>
-      </button>
+      <Link to={"/chat/:" + roomId}>
+        <button onClick={() => handleJoinRoom()}>
+          <b>Join Room</b>
+        </button>
+      </Link>
     </div>
   );
 }

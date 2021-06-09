@@ -35,7 +35,6 @@ function App() {
     setCurrentUser({});
     setLoginEmail("");
     setLoginPassword("");
-    return <Redirect to='/' />;
   }
 
   function findUser(email) {
@@ -127,7 +126,7 @@ function App() {
       <Header handleLogout={handleLogout} isLoggedIn={isLoggedIn} />
       <main>
         <Switch>
-          <Route path='/chat'></Route>
+          <Route path={"/chat/:" + roomId}></Route>
           <Route exact path='/'>
             {homeContent}
           </Route>
