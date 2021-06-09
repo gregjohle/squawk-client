@@ -9,14 +9,14 @@ import Dashboard from "./components/dashboard";
 import Chat from "./components/chat-room";
 
 function App() {
-  var users = [
+  const [users, setUsers] = useState([
     {
       id: "ae8ef4f6-c795-11eb-b8bc-0242ac130003",
       name: "Test User",
       email: "test@email.com",
       password: "Password123",
     },
-  ];
+  ]);
   const [currentUser, setCurrentUser] = useState({});
   const [loginModal, setLoginModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
@@ -45,7 +45,9 @@ function App() {
 
   function handleLogin() {
     console.log(users);
-    let loginUser = users.filter((user) => user.email === loginEmail);
+    let loginUser = users.filter(
+      (user) => user.email === loginEmail.toLowerCase()
+    );
     if (loginUser.length === 0) {
       console.log("No user");
     } else if (loginUser[0].password === loginPassword) {
@@ -72,11 +74,11 @@ function App() {
     let newUser = {
       id: uuidV4(),
       name: name,
-      email: email,
+      email: email.toLowerCase(),
       password: password,
     };
     console.log(newUser);
-    return [...users].push([newUser]);
+    setUsers(users.concat(newUser));
   }
 
   let homeContent = () => {
