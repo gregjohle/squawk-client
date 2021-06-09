@@ -4,7 +4,7 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { v4 as uuidV4 } from "uuid";
 import Main from "./components/main";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Dashboard from "./components/dashboard";
 import Chat from "./components/chat-room";
 
