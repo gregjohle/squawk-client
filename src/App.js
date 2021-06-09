@@ -80,37 +80,43 @@ function App() {
     setUsers(newUserArr);
   }
 
+  let homeContent = () => {
+    if (isLoggedIn === true) {
+      return <Dashboard currentUser={currentUser} />;
+    }
+    return (
+      <Main
+        handleLogin={handleLogin}
+        loginModal={loginModal}
+        setLoginModal={setLoginModal}
+        registerModal={registerModal}
+        setRegisterModal={setRegisterModal}
+        loginEmail={loginEmail}
+        setLoginEmail={setLoginEmail}
+        loginPassword={loginPassword}
+        setLoginPassword={setLoginPassword}
+        demoLogin={demoLogin}
+        addNewUser={addNewUser}
+        registerName={registerName}
+        setRegisterName={setRegisterName}
+        registerEmail={registerEmail}
+        setRegisterEmail={setRegisterEmail}
+        registerPassword={registerPassword}
+        setRegisterPassword={setRegisterPassword}
+        registerConfirmPassword={registerConfirmPassword}
+        setRegisterConfirmPassword={setRegisterConfirmPassword}
+      />
+    );
+  };
+
   return (
     <div className='App'>
       <Header handleLogout={handleLogout} isLoggedIn={isLoggedIn} />
       <main>
         <Switch>
-          <Route path='/dashboard'>
-            <Dashboard currentUser={currentUser} />
-          </Route>
           <Route path='/chat'></Route>
           <Route exact path='/'>
-            <Main
-              handleLogin={handleLogin}
-              loginModal={loginModal}
-              setLoginModal={setLoginModal}
-              registerModal={registerModal}
-              setRegisterModal={setRegisterModal}
-              loginEmail={loginEmail}
-              setLoginEmail={setLoginEmail}
-              loginPassword={loginPassword}
-              setLoginPassword={setLoginPassword}
-              demoLogin={demoLogin}
-              addNewUser={addNewUser}
-              registerName={registerName}
-              setRegisterName={setRegisterName}
-              registerEmail={registerEmail}
-              setRegisterEmail={setRegisterEmail}
-              registerPassword={registerPassword}
-              setRegisterPassword={setRegisterPassword}
-              registerConfirmPassword={registerConfirmPassword}
-              setRegisterConfirmPassword={setRegisterConfirmPassword}
-            />
+            {homeContent}
           </Route>
         </Switch>
       </main>
