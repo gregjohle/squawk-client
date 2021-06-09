@@ -1,7 +1,27 @@
 import React from "react";
+import Modal from "react-modal";
+import CreateRoom from "./create-room";
+import JoinRoom from "./join-room";
+import "./modal.css";
 
 export default function Dashboard(props) {
-  let { currentUser } = props;
+  let {
+    currentUser,
+    createRoomModal,
+    setCreateRoomModal,
+    joinRoomModal,
+    setJoinRoomModal,
+    roomId,
+    setRoomId,
+  } = props;
+
+  function handleCreateRoomModal() {
+    setCreateRoomModal(!createRoomModal);
+  }
+
+  function handleJoinModal() {
+    setJoinRoomModal(!joinRoomModal);
+  }
 
   return (
     <div className='dashboard'>
@@ -14,13 +34,27 @@ export default function Dashboard(props) {
         </p>
       </div>
       <div className='options'>
-        <button>
+        <button onClick={() => handleCreateRoomModal()}>
           <b>Create</b>
         </button>
-        <button>
+        <button onClick={() => handleJoinModal()}>
           <b>Join</b>
         </button>
       </div>
+      <Modal
+        isOpen={createRoomModal}
+        onRequestClose={handleCreateRoomModal}
+        className='dashboardModal'
+        overlayClassName='dashboardOverlay'>
+        <CreateRoom setRoomId={setRoomId} />
+      </Modal>
+      <Modal
+        isOpen={joinRoomModal}
+        onRequestClose={handleJoinModal}
+        className='dashboardModal'
+        overlayClassName='dashboardOverlay'>
+        <JoinRoom roomId={roomId} setRoomId={setRoomId} />
+      </Modal>
     </div>
   );
 }

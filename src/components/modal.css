@@ -19,3 +19,42 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.dashboardModal {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  right: 20%;
+  bottom: 20%;
+  background: url("./images/modal-bg.jpg") center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: solid 3px rgb(116, 188, 255);
+  border-radius: 5px;
+  opacity: 100%;
+}
+
+.dashboardOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(23, 68, 88);
+}
+
+@media screen and (max-width: 1000px) {
+  .modal {
+    border: none;
+    background: transparent;
+  }
+}
+
+@media screen and (max-width: 545px) {
+  .dashboardModal {
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+  }
+}

@@ -11,8 +11,8 @@ function App() {
   const [users, setUsers] = useState([
     {
       id: "ae8ef4f6-c795-11eb-b8bc-0242ac130003",
-      name: "Greg",
-      email: "greg@email.com",
+      name: "Test User",
+      email: "test@email.com",
       password: "Password123",
     },
   ]);
@@ -26,6 +26,9 @@ function App() {
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [createRoomModal, setCreateRoomModal] = useState(false);
+  const [joinRoomModal, setJoinRoomModal] = useState(false);
+  const [roomId, setRoomId] = useState("");
 
   function handleLogout() {
     setIsLoggedIn(false);
@@ -82,7 +85,17 @@ function App() {
 
   let homeContent = () => {
     if (isLoggedIn === true) {
-      return <Dashboard currentUser={currentUser} />;
+      return (
+        <Dashboard
+          currentUser={currentUser}
+          createRoomModal={createRoomModal}
+          setCreateRoomModal={setCreateRoomModal}
+          joinRoomModal={joinRoomModal}
+          setJoinRoomModal={setJoinRoomModal}
+          roomId={roomId}
+          setRoomId={setRoomId}
+        />
+      );
     }
     return (
       <Main
