@@ -186,8 +186,8 @@ export default function Chat(props) {
 
   return (
     <div className='chat'>
-      <video autoPlay ref={userVideo} className='userVideo' />
-      <video autoPlay ref={partnerVideo} className='partnerVideo' />
+      <video autoPlay playsInline ref={userVideo} className='userVideo' />
+      <video autoPlay playsInline ref={partnerVideo} className='partnerVideo' />
     </div>
   );
 }
