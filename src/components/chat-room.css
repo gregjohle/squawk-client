@@ -5,6 +5,10 @@
   align-items: center;
 }
 
-iframe {
-  padding-top: 5%;
+video.userVideo {
+  width: 100px;
+}
+
+video.partnerVideo {
+  width: 100%;
 }

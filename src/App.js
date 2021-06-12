@@ -2,21 +2,12 @@ import "./App.css";
 import React, { useState } from "react";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import { v4 as uuidV4 } from "uuid";
 import Main from "./components/main";
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "./components/dashboard";
 import Chat from "./components/chat-room";
 
 function App() {
-  const [users, setUsers] = useState([
-    {
-      id: "ae8ef4f6-c795-11eb-b8bc-0242ac130003",
-      name: "Test User",
-      email: "test@email.com",
-      password: "Password123",
-    },
-  ]);
   const [currentUser, setCurrentUser] = useState({});
   const [loginModal, setLoginModal] = useState(false);
   const [registerModal, setRegisterModal] = useState(false);
@@ -206,7 +197,7 @@ function App() {
       <main>
         <Switch>
           <Route path={"/chat/:" + roomId}>
-            <Chat />
+            <Chat roomId={roomId} />
           </Route>
           <Route exact path='/'>
             {homeContent}

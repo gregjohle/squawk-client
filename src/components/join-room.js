@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import "./join-room.css";
 
 export default function JoinRoom(props) {
-  let { roomId, setRoomId, currentUser, joinRoomModal, setJoinRoomModal } =
-    props;
+  let { roomId, setRoomId, joinRoomModal, setJoinRoomModal } = props;
 
   function handleRoomId(event) {
     setRoomId(event.target.value);

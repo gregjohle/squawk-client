@@ -4,7 +4,7 @@ import { v4 as uuidV4 } from "uuid";
 import "./create-room.css";
 
 export default function CreateRoom(props) {
-  let { currentUser, setRoomId, createRoomModal, setCreateRoomModal } = props;
+  let { setRoomId, createRoomModal, setCreateRoomModal } = props;
 
   let roomId = uuidV4();
 
