@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./chat-room.css";
 import io from "socket.io-client";
+const socket = io(process.env.REACT_APP_SOCKET_URL);
 
 export default function Chat(props) {
   const { roomId } = props;
