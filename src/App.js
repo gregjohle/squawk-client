@@ -39,21 +39,78 @@ function App() {
   }
 
   function demoLogin() {
-    setCurrentUser(users[0]);
-    setIsLoggedIn(true);
+    let loginInfo = {
+      email: "test@email.com",
+      password: "Password123",
+    };
+    fetch(process.env.REACT_APP_LOGIN_URL, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginInfo),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(response.statusText);
+      })
+      .then((responseJson) => {
+        let currentUserObj = {
+          email: responseJson.email,
+          name: responseJson.name,
+          id: responseJson.id,
+        };
+        setCurrentUser(currentUserObj);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }
 
   function handleLogin() {
-    console.log(users);
-    let loginUser = users.filter(
-      (user) => user.email === loginEmail.toLowerCase()
-    );
-    if (loginUser.length === 0) {
-      console.log("No user");
-    } else if (loginUser[0].password === loginPassword) {
-      setCurrentUser(loginUser[0]);
-      setIsLoggedIn(true);
-    }
+    let loginInfo = {
+      email: loginEmail,
+      password: loginPassword,
+    };
+    fetch(process.env.REACT_APP_LOGIN_URL, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginInfo),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(response.statusText);
+      })
+      .then((responseJson) => {
+        let currentUserObj = {
+          email: responseJson.email,
+          name: responseJson.name,
+          id: responseJson.id,
+        };
+        setCurrentUser(currentUserObj);
+        setIsLoggedIn(true);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+
+    // console.log(users);
+    // let loginUser = users.filter(
+    //   (user) => user.email === loginEmail.toLowerCase()
+    // );
+    // if (loginUser.length === 0) {
+    //   console.log("No user");
+    // } else if (loginUser[0].password === loginPassword) {
+    //   setCurrentUser(loginUser[0]);
+    //   setIsLoggedIn(true);
+    // }
     // setCurrentUser(loginUser);
 
     // setIsLoggedIn(true);
@@ -71,14 +128,37 @@ function App() {
   }
 
   function addNewUser(name, email, password) {
-    let newUser = {
-      id: uuidV4(),
+    let newUserObject = {
       name: name,
       email: email.toLowerCase(),
       password: password,
     };
-    console.log(newUser);
-    setUsers(users.concat(newUser));
+    fetch(process.env.REACT_APP_REGISTER_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserObject),
+    })
+      .then((res) => {
+        if (res.ok) {
+          console.log(res.message);
+        } else {
+          throw new Error();
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      });
+
+    // let newUser = {
+    //   id: uuidV4(),
+    //   name: name,
+    //   email: email.toLowerCase(),
+    //   password: password,
+    // };
+    // console.log(newUser);
+    // setUsers(users.concat(newUser));
   }
 
   let homeContent = () => {
