@@ -13,11 +13,16 @@ export default function CreateRoom(props) {
     setCreateRoomModal(!createRoomModal);
   }
 
+  function handleCopyRoomID() {
+    navigator.clipboard.writeText(roomId);
+    alert("Room ID Copied to Clipboard");
+  }
+
   return (
     <div className='newRoom'>
       <h2>Create Room</h2>
       <p>Here is your Room ID, share it with your friends.</p>
-      <h3>{roomId}</h3>
+      <h3 onClick={() => handleCopyRoomID()}>{roomId}</h3>
       <Link to={"/chat/:" + roomId}>
         <button onClick={() => joinNewRoom()}>
           <b>Join Room</b>
