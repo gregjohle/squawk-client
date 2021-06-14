@@ -1,17 +1,19 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import "./chat-room.css";
 import io from "socket.io-client";
+import { Link } from "react-router-dom";
 
 export default function Chat(props) {
-  const { roomId } = props;
-
-  // these are state references for the incoming and outgoing data for the video chat
-  const userVideo = useRef();
-  const partnerVideo = useRef();
-  const peerRef = useRef();
-  const socketRef = useRef();
-  const otherUser = useRef();
-  const userStream = useRef();
+  const {
+    roomId,
+    handleHangup,
+    userVideo,
+    partnerVideo,
+    peerRef,
+    socketRef,
+    otherUser,
+    userStream,
+  } = props;
 
   // this gives a warning because of the empty dependency array. I want this to process once when the coponent mounts.
   // this dependency array must remain empty.
@@ -20,7 +22,6 @@ export default function Chat(props) {
     navigator.mediaDevices
       .getUserMedia({ audio: true, video: true })
       .then((stream) => {
-        console.log("attempting to get incomming stream");
         // assigns user media to user refs
         userVideo.current.srcObject = stream;
         userStream.current = stream;
@@ -189,6 +190,13 @@ export default function Chat(props) {
     <div className='chat'>
       <video autoPlay playsInline ref={userVideo} className='userVideo' />
       <video autoPlay playsInline ref={partnerVideo} className='partnerVideo' />
+      <div className='chatButtons'>
+        <Link to='/'>
+          <button onClick={() => handleHangup()}>
+            <b>End Call</b>
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

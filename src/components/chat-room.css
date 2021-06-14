@@ -3,12 +3,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: black;
+  padding-bottom: 15%;
 }
 
 video.userVideo {
-  width: 200px;
+  max-width: 9rem;
+  max-height: 9rem;
+  height: auto;
+  width: auto;
+  position: absolute;
+  top: 22%;
+  left: 15%;
+  border: solid rgb(116, 188, 255) 3px;
 }
 
 video.partnerVideo {
-  width: 100%;
+  margin-top: 5%;
+  object-fit: cover;
+  width: max-content;
+  flex: 6;
+  border: solid rgb(116, 188, 255) 3px;
+}
+
+div.chatButtons button {
+  margin-top: 10%;
 }

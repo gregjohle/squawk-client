@@ -4,7 +4,7 @@ import "./header.css";
 import Logo from "./images/logo.png";
 
 export default function Header(props) {
-  let { handleLogout, isLoggedIn } = props;
+  let { handleLogout, isLoggedIn, handleHangup } = props;
 
   function handleLogoutButton() {
     if (isLoggedIn) {
@@ -16,14 +16,16 @@ export default function Header(props) {
   let buttonClass = `headerButton ` + handleLogoutButton();
 
   return (
-    <header>
-      <h1>Squawk</h1>
-      <img src={Logo} alt='logo for Squawk, the outline of a seagull' />
-      <Link to='/' className='buttonClass'>
-        <button className={buttonClass} onClick={() => handleLogout()}>
-          Logout
-        </button>
-      </Link>
-    </header>
+    <Link to='/' className='buttonClass' onClick={() => handleHangup()}>
+      <header>
+        <h1>Squawk</h1>
+        <img src={Logo} alt='logo for Squawk, the outline of a seagull' />
+        <Link to='/' className='buttonClass'>
+          <button className={buttonClass} onClick={() => handleLogout()}>
+            Logout
+          </button>
+        </Link>
+      </header>
+    </Link>
   );
 }

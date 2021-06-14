@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Main from "./components/main";
@@ -21,6 +21,13 @@ function App() {
   const [createRoomModal, setCreateRoomModal] = useState(false);
   const [joinRoomModal, setJoinRoomModal] = useState(false);
   const [roomId, setRoomId] = useState("");
+  // these are state references for the incoming and outgoing data for the video chat
+  const userVideo = useRef();
+  const partnerVideo = useRef();
+  const peerRef = useRef();
+  const socketRef = useRef();
+  const otherUser = useRef();
+  const userStream = useRef();
 
   function handleLogout() {
     setIsLoggedIn(false);
@@ -91,31 +98,6 @@ function App() {
       .catch((err) => {
         alert(err);
       });
-
-    // console.log(users);
-    // let loginUser = users.filter(
-    //   (user) => user.email === loginEmail.toLowerCase()
-    // );
-    // if (loginUser.length === 0) {
-    //   console.log("No user");
-    // } else if (loginUser[0].password === loginPassword) {
-    //   setCurrentUser(loginUser[0]);
-    //   setIsLoggedIn(true);
-    // }
-    // setCurrentUser(loginUser);
-
-    // setIsLoggedIn(true);
-
-    // let user = findUser(loginEmail);
-    // console.log("user: " + user);
-    // if (user.password === undefined) {
-    //   console.log("user email not defined");
-    // } else if (user.password === loginPassword) {
-    //   setCurrentUser(user);
-    //   console.log("logged in");
-    // } else if (user.password !== loginPassword) {
-    //   return alert("Invalid Password");
-    // }
   }
 
   function addNewUser(name, email, password) {
@@ -141,15 +123,11 @@ function App() {
       .catch((error) => {
         alert(error);
       });
+  }
 
-    // let newUser = {
-    //   id: uuidV4(),
-    //   name: name,
-    //   email: email.toLowerCase(),
-    //   password: password,
-    // };
-    // console.log(newUser);
-    // setUsers(users.concat(newUser));
+  function handleHangup() {
+    userStream.current.getTracks()[0].stop();
+    userStream.current.getTracks()[1].stop();
   }
 
   let homeContent = () => {
@@ -193,11 +171,24 @@ function App() {
 
   return (
     <div className='App'>
-      <Header handleLogout={handleLogout} isLoggedIn={isLoggedIn} />
+      <Header
+        handleLogout={handleLogout}
+        isLoggedIn={isLoggedIn}
+        handleHangup={handleHangup}
+      />
       <main>
         <Switch>
           <Route path={"/chat/:" + roomId}>
-            <Chat roomId={roomId} />
+            <Chat
+              roomId={roomId}
+              handleHangup={handleHangup}
+              userVideo={userVideo}
+              partnerVideo={partnerVideo}
+              peerRef={peerRef}
+              socketRef={socketRef}
+              otherUser={otherUser}
+              userStream={userStream}
+            />
           </Route>
           <Route exact path='/'>
             {homeContent}
