@@ -1,7 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import "./chat-room.css";
 import io from "socket.io-client";
-const socket = io(process.env.REACT_APP_SOCKET_URL);
+const socketOptions = {
+  "force new connection": true,
+  reconnectionAttempts: "Infinity",
+  timeout: 10000,
+  transports: ["websocket"],
+};
+const socket = io(process.env.REACT_APP_SOCKET_URL, socketOptions);
 
 export default function Chat(props) {
   const { roomId } = props;
