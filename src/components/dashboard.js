@@ -29,7 +29,7 @@ export default function Dashboard(props) {
         <h2>Welcome, {currentUser.name}</h2>
         <p>
           If you wish to create a chat room, click on the "Create" button. If
-          you widh to join an existing room with a code, click on the "Join"
+          you wish to join an existing room with a code, click on the "Join"
           button below
         </p>
       </div>
