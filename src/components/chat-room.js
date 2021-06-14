@@ -21,11 +21,12 @@ export default function Chat(props) {
     navigator.mediaDevices
       .getUserMedia({ audio: true, video: true })
       .then((stream) => {
+        console.log("attempting to get incomming stream");
         // assigns user media to user refs
         userVideo.current.srcObject = stream;
         userStream.current = stream;
         // communicates user has joined room to the server, sending room ID
-        socketRef.current = io.connect("/");
+        socketRef.current = socket.connect("/");
         socketRef.current.emit("join room", roomId);
         // Sends request to server to find other users, if present.
         socketRef.current.on("other user", (userID) => {
