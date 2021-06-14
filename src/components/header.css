@@ -40,3 +40,23 @@ button.headerButton {
     margin-left: 2%;
   }
 }
+
+header Link {
+  color: black;
+}
+
+header Link:link {
+  color: black;
+}
+
+header Link:visited {
+  color: black;
+}
+
+header Link:hover {
+  color: black;
+}
+
+header Link:active {
+  color: black;
+}

@@ -126,8 +126,10 @@ function App() {
   }
 
   function handleHangup() {
-    userStream.current.getTracks()[0].stop();
-    userStream.current.getTracks()[1].stop();
+    if (userStream.current) {
+      userStream.current.getTracks()[0].stop();
+      userStream.current.getTracks()[1].stop();
+    }
   }
 
   let homeContent = () => {
