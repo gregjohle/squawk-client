@@ -1,13 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import "./chat-room.css";
 import io from "socket.io-client";
-const socketOptions = {
-  "force new connection": true,
-  reconnectionAttempts: "Infinity",
-  timeout: 10000,
-  transports: ["websocket"],
-};
-const socket = io(process.env.REACT_APP_SOCKET_URL, socketOptions);
 
 export default function Chat(props) {
   const { roomId } = props;
@@ -32,7 +25,7 @@ export default function Chat(props) {
         userVideo.current.srcObject = stream;
         userStream.current = stream;
         // communicates user has joined room to the server, sending room ID
-        socketRef.current = socket.connect("/");
+        socketRef.current = io(process.env.REACT_APP_SOCKET_URL).connect("/");
         socketRef.current.emit("join room", roomId);
         // Sends request to server to find other users, if present.
         socketRef.current.on("other user", (userID) => {
