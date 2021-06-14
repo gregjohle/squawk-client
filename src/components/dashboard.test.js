@@ -1,17 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import App from "./App";
+import Dashboard from "./dashboard";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");
+  const currentUser = {
+    name: "Test",
+  };
 
-  ReactDOM.render(
-    <Router>
-      <App />
-    </Router>,
-    div
-  );
+  ReactDOM.render(<Dashboard currentUser={currentUser} />, div);
 
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -6,7 +6,7 @@ import Login from "./login";
 import "./modal.css";
 import Signup from "./signup";
 
-Modal.setAppElement("#root");
+// Modal.setAppElement("#root");
 
 export default function Main(props) {
   let {
