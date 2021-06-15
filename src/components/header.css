@@ -41,7 +41,8 @@ button.headerButton {
   }
 }
 
-header Link {
+header Link,
+Link h1 {
   color: black;
 }
 

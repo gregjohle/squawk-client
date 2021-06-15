@@ -188,9 +188,22 @@ export default function Chat(props) {
 
   // userVideo starts muted to prevent an echo
   return (
-    <div className='chat'>
-      <video autoPlay playsInline muted ref={userVideo} className='userVideo' />
-      <video autoPlay playsInline ref={partnerVideo} className='partnerVideo' />
+    <>
+      <div className='chat'>
+        <video
+          autoPlay
+          playsInline
+          muted
+          ref={userVideo}
+          className='userVideo'
+        />
+        <video
+          autoPlay
+          playsInline
+          ref={partnerVideo}
+          className='partnerVideo'
+        />
+      </div>
       <div className='chatButtons'>
         <Link to='/'>
           <button onClick={() => handleHangup()}>
@@ -198,6 +211,6 @@ export default function Chat(props) {
           </button>
         </Link>
       </div>
-    </div>
+    </>
   );
 }
