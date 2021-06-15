@@ -6,16 +6,9 @@ import Chat from "./chat-room";
 
 it("renders without crashing", async () => {
   const div = document.createElement("div");
-  Object.defineProperty(window, "MediaRecorder", {
-    writable: true,
-    value: jest.fn().mockImplementation((query) => ({
-      start: jest.fn(),
-      ondataavailable: jest.fn(),
-      onerror: jest.fn(),
-      state: "",
-      stop: jest.fn(),
-    })),
-  });
+  global.navigator.mediaDevices = {
+    enumerateDevices: jest.fn(),
+  };
 
   ReactDOM.render(
     <Router>
