@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import CreateRoom from "./create-room";
 import JoinRoom from "./join-room";
 import "./modal.css";
+import "./dashboard.css";
 
 export default function Dashboard(props) {
   let {

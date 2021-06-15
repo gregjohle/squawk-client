@@ -3,6 +3,7 @@ div.mainWrapper {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  background: transparent;
 }
 
 div.tallWrapper {
@@ -14,6 +15,7 @@ div.tallWrapper {
   margin: 3% 3% 10% 3%;
   padding: 0 3% 3% 3%;
   border-radius: 5px;
+  background: white;
 }
 
 div.tallWrapper img {
@@ -34,7 +36,9 @@ div.stacker {
   border-radius: 5px;
   width: 100%;
   height: 100%;
+  text-align: center;
   padding-bottom: 3%;
+  background: white;
 }
 
 button {
