@@ -186,9 +186,10 @@ export default function Chat(props) {
     partnerVideo.current.srcObject = e.streams[0];
   }
 
+  // userVideo starts muted to prevent an echo
   return (
     <div className='chat'>
-      <video autoPlay playsInline ref={userVideo} className='userVideo' />
+      <video autoPlay playsInline muted ref={userVideo} className='userVideo' />
       <video autoPlay playsInline ref={partnerVideo} className='partnerVideo' />
       <div className='chatButtons'>
         <Link to='/'>
