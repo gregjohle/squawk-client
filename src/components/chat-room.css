@@ -19,3 +19,9 @@ video.partnerVideo {
   width: 100%;
   padding-bottom: 5%;
 }
+
+@media screen and (max-width: 900px) {
+  .chat {
+    grid-template-columns: 25% 75%;
+  }
+}
