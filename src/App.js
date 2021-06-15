@@ -29,6 +29,7 @@ function App() {
   const otherUser = useRef();
   const userStream = useRef();
 
+  // handles what to do when logged out
   function handleLogout() {
     setIsLoggedIn(false);
     setCurrentUser({});
@@ -36,6 +37,7 @@ function App() {
     setLoginPassword("");
   }
 
+  // allows easy login for demo account
   function demoLogin() {
     let loginInfo = {
       email: "test@email.com",
@@ -68,6 +70,7 @@ function App() {
       });
   }
 
+  //allows individual users to login
   function handleLogin() {
     let loginInfo = {
       email: loginEmail,
@@ -100,6 +103,7 @@ function App() {
       });
   }
 
+  // allows a new user to be registered
   function addNewUser(name, email, password) {
     let newUserObject = {
       name: name,
@@ -125,6 +129,7 @@ function App() {
       });
   }
 
+  // stops media streams when call ends
   function handleHangup() {
     if (userStream.current) {
       userStream.current.getTracks()[0].stop();
@@ -132,6 +137,7 @@ function App() {
     }
   }
 
+  // determines homepage content based on login status
   let homeContent = () => {
     if (isLoggedIn === true) {
       return (
