@@ -16,15 +16,18 @@ export default function Header(props) {
   let buttonClass = `headerButton ` + handleLogoutButton();
 
   return (
-    <Link to='/' className='buttonClass' onClick={() => handleHangup()}>
+    <Link
+      to='/'
+      className='buttonClass'
+      style={{ textDecoration: "none", color: "black" }}
+      onClick={() => handleHangup()}>
       <header>
         <h1>Squawk</h1>
         <img src={Logo} alt='logo for Squawk, the outline of a seagull' />
-        <Link to='/' className='buttonClass'>
-          <button className={buttonClass} onClick={() => handleLogout()}>
-            Logout
-          </button>
-        </Link>
+
+        <button className={buttonClass} onClick={() => handleLogout()}>
+          Logout
+        </button>
       </header>
     </Link>
   );
