@@ -41,7 +41,7 @@ function App() {
       email: "test@email.com",
       password: "Password123",
     };
-    fetch(process.env.REACT_APP_LOGIN_URL, {
+    fetch(process.env.REACT_APP_URL + "/api/users/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +73,7 @@ function App() {
       email: loginEmail,
       password: loginPassword,
     };
-    fetch(process.env.REACT_APP_LOGIN_URL, {
+    fetch(process.env.REACT_APP_URL + "/api/users/login", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -106,7 +106,7 @@ function App() {
       email: email.toLowerCase(),
       password: password,
     };
-    fetch(process.env.REACT_APP_REGISTER_URL, {
+    fetch(process.env.REACT_APP_URL + "/api/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

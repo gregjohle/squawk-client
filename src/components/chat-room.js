@@ -26,7 +26,7 @@ export default function Chat(props) {
         userVideo.current.srcObject = stream;
         userStream.current = stream;
         // communicates user has joined room to the server, sending room ID
-        socketRef.current = io(process.env.REACT_APP_SOCKET_URL).connect("/");
+        socketRef.current = io(process.env.REACT_APP_URL).connect("/");
         socketRef.current.emit("join room", roomId);
         // Sends request to server to find other users, if present.
         socketRef.current.on("other user", (userID) => {
