@@ -14,24 +14,24 @@ For more information on the Squawk API working behind the scenes, click [here](h
 
 ### The Landing Page
 
-![Image](./components/images/landing-page.png)
+![Image](./src/components/images/landing-page.png)
 
 From this initial location, a user has the option to register for an account, login to an existing account, or utilize the demo account.
 
 ### Registration
 
-![Image](./components/images/register.png)
+![Image](./src/components/images/register.png)
 
 By filling out this form, the Squawk API adds the user information into the back-end database.
 
 ### Login
 
-![Image](./components/images/login.png)
+![Image](./src/components/images/login.png)
 
 A user can access an existing account through this form.
 
 ### Demo Account Login
 
-![Image](./components/images/demo-login.png)
+![Image](./src/components/images/demo-login.png)
 
 This button fetches account information for the test account automatically.
