@@ -9,7 +9,7 @@ div.joinRoom input {
   margin-bottom: 2%;
   height: 25px;
   width: 300px;
-  background-color: rgb(116, 188, 255);
+  background-color: #3dbfcf;
   border: solid 3px black;
   border-radius: 5px;
 }
