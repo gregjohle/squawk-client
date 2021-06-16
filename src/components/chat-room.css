@@ -8,6 +8,7 @@ video.partnerVideo {
   border: solid rgb(116, 188, 255) 3px;
   width: 100%;
   border-radius: 5px;
+  max-height: 800px;
 }
 
 .chatButtons {
