@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Original_Surfer";
+  src: local("Original_Surfer"),
+    url("./fonts/Original_Surfer/OriginalSurfer-Regular.ttf") format("truetype");
+  font-weight: bold;
+}
+
 header {
   display: flex;
   flex-direction: column;
@@ -11,7 +18,7 @@ header {
 }
 
 header h1 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Original_Surfer;
 }
 
 header img {

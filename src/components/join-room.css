@@ -1,8 +1,19 @@
+@font-face {
+  font-family: "Original_Surfer";
+  src: local("Original_Surfer"),
+    url("./fonts/Original_Surfer/OriginalSurfer-Regular.ttf") format("truetype");
+  font-weight: bold;
+}
+
 .joinRoom {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+div.joinRoom h2 {
+  font-family: Original_Surfer;
 }
 
 div.joinRoom input {
