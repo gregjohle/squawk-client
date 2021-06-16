@@ -13,7 +13,7 @@ export default function Header(props) {
     return "hidden";
   }
 
-  let buttonClass = `headerButton ` + handleLogoutButton();
+  let buttonClass = `logoutButton ` + handleLogoutButton();
 
   return (
     <Link

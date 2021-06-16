@@ -7,6 +7,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   padding-bottom: 3%;
+  width: 100%;
 }
 
 header h1 {
@@ -21,8 +22,8 @@ header img {
   display: none;
 }
 
-button.headerButton {
-  background: rgb(116, 188, 255);
+button.logoutButton {
+  background: transparent;
   border: 3px black solid;
   margin-top: 2%;
 }
@@ -37,9 +38,9 @@ button.headerButton {
     padding-left: 3%;
   }
 
-  Link.headerButton {
+  button.logoutButton {
     margin-top: 0;
-    margin-left: 2%;
+    margin-left: 3%;
   }
 }
 

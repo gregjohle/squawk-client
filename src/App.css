@@ -2,3 +2,7 @@ main {
   background-image: url("./components/images/main-bg.jpg") center no-repeat
     cover;
 }
+
+.App {
+  background-color: #0a000f;
+}

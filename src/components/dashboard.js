@@ -31,7 +31,7 @@ export default function Dashboard(props) {
         <p>
           If you wish to create a chat room, click on the "Create" button. If
           you wish to join an existing room with a code, click on the "Join"
-          button below
+          button below.
         </p>
       </div>
       <div className='options'>

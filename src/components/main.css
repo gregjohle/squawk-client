@@ -7,7 +7,7 @@ div.mainWrapper {
 }
 
 div.tallWrapper {
-  border: solid 3px rgb(116, 188, 255);
+  border: solid 3px #3dbfcf;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +32,7 @@ div.stackedWrapper {
 }
 
 div.stacker {
-  border: solid 3px rgb(116, 188, 255);
+  border: solid 3px #3dbfcf;
   border-radius: 5px;
   width: 100%;
   height: 100%;
@@ -42,7 +42,7 @@ div.stacker {
 }
 
 button {
-  background-color: rgb(116, 188, 255);
+  background-color: #3dbfcf;
   border: solid 3px black;
   font-family: Arial, Helvetica, sans-serif;
   height: 50px;

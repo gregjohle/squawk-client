@@ -52,7 +52,7 @@ export default function Main(props) {
   return (
     <div className='mainWrapper'>
       <div className='tallWrapper'>
-        <h2>Welcom to Squawk</h2>
+        <h2>Welcome to Squawk</h2>
         <img src={Logo} alt='logo for Squawk, the outline of a seagull' />
         <p>
           Squawk is a communication platform. This app allows users to create or
