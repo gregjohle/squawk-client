@@ -30,7 +30,7 @@ header img {
 }
 
 button.logoutButton {
-  background: transparent;
+  background: #3dbfcf;
   border: 3px black solid;
   margin-top: 2%;
 }
