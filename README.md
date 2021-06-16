@@ -35,3 +35,39 @@ A user can access an existing account through this form.
 ![Image](./src/components/images/demo-login.png)
 
 This button fetches account information for the test account automatically.
+
+### Dashboard
+
+![Image](./src/components/images/dashboard.png)
+
+Once logged-in, a user has the option to create a new room, or access an existing room.
+
+### Create Room
+
+![Image](./src/components/images/create-room.png)
+
+A room code is automatically generated from the UUID npm package installed within the project. By clicking on this code, it is automatically added to the clipboard for easy sharing.
+
+### Join a Room
+
+![Image](./src/components/images/join-room.png)
+
+If a friend shares a room code with the user, they can access the room by placing the room code into this input field.
+
+### Video Chat
+
+![Image](./src/components/images/call.png)
+
+Once both users are inside the room, a webRTC connection is established between both users. This is a secure, encrypted, peer to peer connection.
+
+## Technology Used
+
+This app was created with a full JavaScript stack, using the popular React framework on the front-end, and the Node.js framework on the back-end.
+
+Front-end technology includes webRTC for video and audio communication.
+
+Back-end technology inclues express, PostgreSQL, and socket.io (to establish a connection between users).
+
+## Contact
+
+If there are any questions, concerns, or issues, please feel free to contact Greg at greg.johle@gmail.com
