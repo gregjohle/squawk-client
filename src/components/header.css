@@ -3,7 +3,9 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(116, 188, 255);
+  background: url("./images/header-bg.jpg") center;
+  background-repeat: no-repeat;
+  background-size: cover;
   padding-bottom: 3%;
 }
 
