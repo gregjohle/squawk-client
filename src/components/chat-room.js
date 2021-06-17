@@ -18,32 +18,35 @@ export default function Chat(props) {
   // this gives a warning because of the empty dependency array. I want this to process once when the coponent mounts.
   // this dependency array must remain empty.
   useEffect(() => {
+    const userMedia = navigator.getUserMedia;
     // get's the permission to use the camera and microphone
-    navigator.mediaDevices
-      .getUserMedia({ audio: true, video: true })
-      .then((stream) => {
-        // assigns user media to user refs
-        userVideo.current.srcObject = stream;
-        userStream.current = stream;
-        // communicates user has joined room to the server, sending room ID
-        socketRef.current = io(process.env.REACT_APP_URL).connect("/");
-        socketRef.current.emit("join room", roomId);
-        // Sends request to server to find other users, if present.
-        socketRef.current.on("other user", (userID) => {
-          callUser(userID);
-          otherUser.current = userID;
+    if (userMedia) {
+      navigator.mediaDevices
+        .getUserMedia({ audio: true, video: true })
+        .then((stream) => {
+          // assigns user media to user refs
+          userVideo.current.srcObject = stream;
+          userStream.current = stream;
+          // communicates user has joined room to the server, sending room ID
+          socketRef.current = io(process.env.REACT_APP_URL).connect("/");
+          socketRef.current.emit("join room", roomId);
+          // Sends request to server to find other users, if present.
+          socketRef.current.on("other user", (userID) => {
+            callUser(userID);
+            otherUser.current = userID;
+          });
+          // assigns user data to refs
+          socketRef.current.on("user joined", (userID) => {
+            otherUser.current = userID;
+          });
+          // triggers offer to connect peer to peer
+          socketRef.current.on("offer", handleRecieveCall);
+          // answers call from other user
+          socketRef.current.on("answer", handleAnswer);
+          // handles ICE negotiation to establish Peer to Peer communication.
+          socketRef.current.on("ice-candidate", handleNewICECandidate);
         });
-        // assigns user data to refs
-        socketRef.current.on("user joined", (userID) => {
-          otherUser.current = userID;
-        });
-        // triggers offer to connect peer to peer
-        socketRef.current.on("offer", handleRecieveCall);
-        // answers call from other user
-        socketRef.current.on("answer", handleAnswer);
-        // handles ICE negotiation to establish Peer to Peer communication.
-        socketRef.current.on("ice-candidate", handleNewICECandidate);
-      });
+    }
   }, []);
 
   // creates a peer and assigns user media to be sent
